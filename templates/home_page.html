@@ -1,0 +1,34 @@
+<h1>Ravintolat</h1>
+
+{% if session.user_id %}
+<b>{{ session.user_name }}</b> is logged in
+<p>
+<a href="/logout">Log out</a>
+<p>
+{% else %}
+You are not logged in.
+<p>
+<h3>Login</h3>
+<form action="/login" method="POST">
+Username: <br><input type="text" name="username">
+<p>
+Password: <br><input type="password" name="password">
+<p>
+<input type="submit" value="Login">
+</form>
+<p>
+Do not have an account?
+<p>
+Sign up as a <a href="/register_normal_user">user</a> or as an <a href="/register_admin">admin</a>
+<p>
+{% endif %}
+
+
+{% if session.is_admin == True %}
+<h3>You have admin priviledges.</h3>
+<p>
+<a href="/new_restaurant">Add a new restaurant</a>
+<p>
+Remove a restaurant
+<p>
+{% endif %}
