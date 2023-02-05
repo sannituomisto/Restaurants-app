@@ -13,6 +13,9 @@ Sovelluksessa käyttäjä voi etsiä ravintoloita sekä antaa niille arvosteluja
   - voi antaa ravintolalle arvosanan asteikolla 1-5 sekä halutessaan lyhyen sanallisen arvion (max 1 arvostelu tietylle ravintolalle per käyttäjä)
   - voi muokata aiemmin antamaansa arviota
 - Ylläpitäjä
+  - voi luoda uuden tunnuksen **tehty**
+  - voi poistaa olemassa olevan tunnuksen
+  - voi kirjautua sisään ja ulos luomillaan tunnuksilla **tehty**
   - voi lisätä **tehty**, poistaa ja muokata ravintoloita
   - voi poistaa käyttäjien antamia epäasiallisia arvosteluja
   - voi järjestää ravintolat eri kategorioihin **tehty**
