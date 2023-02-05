@@ -1,10 +1,11 @@
 from app import app
 import users
+import restaurants
 from flask import render_template, request, redirect
 
 @app.route("/")
 def index():
-    return redirect("/login")
+    return redirect("/home_page")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -15,13 +16,8 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         if users.login(username, password):
-            user = users.get_user(username)
-            if user.is_admin:
-                return redirect("/admin_page")
-            else:
-                return redirect("/user_page")
-        else:
-            return render_template("error.html", message = "Wrong username or password")
+            return redirect("/home_page")
+        return render_template("error.html", message = "Wrong username or password")
 
 @app.route("/register_normal_user", methods=["GET", "POST"])
 def register_normal_user():
@@ -48,7 +44,7 @@ def register_normal_user():
         if not users.register(username, password1, False):
             return render_template("error.html", message="Registration failed")
 
-        return redirect("/normal_user_page")
+        return redirect("/home_page")
 
 
 @app.route("/register_admin", methods=["GET", "POST"])
@@ -76,17 +72,47 @@ def register_admin():
         if not users.register(username, password1, True):
             return render_template("error.html", message="Registration failed")
 
-        return redirect("/admin_page")
+        return redirect("/home_page")
 
+@app.route("/logout")
+def logout():
+    users.logout()
+    return redirect("/")
 
-@app.route("/admin_page", methods=["GET", "POST"])
-def admin_page():
-    return render_template("admin_page.html")
-    
-@app.route("/normal_user_page", methods=["GET", "POST"])
-def normal_user_page():
-    return render_template("normal_user_page.html")
+@app.route("/home_page", methods=["GET", "POST"])
+def home_page():
+    return render_template("home_page.html")
 
+@app.route("/new_restaurant", methods=["GET", "POST"])
+def new_restaurant():
+    if request.method == "GET":
+        if users.is_admin:
+            return render_template("new_restaurant.html")
+        else:
+            return render_template("error.html", message= "Only admins can add a new restaurant")
+
+    if request.method == "POST":
+        if users.is_admin:
+            name = request.form["name"]
+            address = request.form["address"]
+            price_range = request.form["price_range"]
+            category = request.form["category"]
+
+            if len(name) > 40 or len(name) < 1:
+                return render_template("error.html", message="Invalid name")
+
+            if len(address) > 40 or len(address) < 1:
+                return render_template("error.html", message="Invalid address")
+
+            if not restaurants.new_restaurant(name, address, price_range, category):
+                return render_template("error.html", message="Submit failed")
+
+            return redirect("/home_page")
+
+        else:
+            return render_template("error.html", message= "Only admins can add a new restaurant")
+
+        
 
 
 
