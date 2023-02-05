@@ -16,7 +16,7 @@ def login(username, password):
             return False
         session["user_id"] = user[1]
         session["user_name"] = username
-        session["user_is_admin"] = user[2]
+        session["is_admin"] = user[2]
         session["csrf_token"] = os.urandom(16).hex()
         return True
 
@@ -32,11 +32,21 @@ def register(username,password,is_admin):
     return login(username, password)
 
 
-def get_user(username):
-    sql=text("SELECT id, username, is_admin FROM users WHERE username=:username")
-    result = db.session.execute(sql, {"username":username})
-    user = result.fetchone()
-    return user
+def is_admin():
+    try:
+        username=session["user_name"]
+        sql=text("SELECT is_admin FROM users WHERE username=:username")
+        result = db.session.execute(sql, {"username":username})
+        is_admin = result.fetchone()
+        return is_admin
+    except:
+        return False
+
+def logout():
+    del session["user_id"]
+    del session["user_name"]
+    del session["is_admin"]
+
 
 
     
