@@ -19,3 +19,27 @@ Sovelluksessa käyttäjä voi etsiä ravintoloita sekä antaa niille arvosteluja
   - voi lisätä **tehty**, poistaa ja muokata ravintoloita
   - voi poistaa käyttäjien antamia epäasiallisia arvosteluja
   - voi järjestää ravintolat eri kategorioihin **tehty**
+  
+## Sovelluksen käynnistäminen paikallisesti
+1. Kloonaa tämä repositorio koneellesi ja siirry sen juurikansioon.   
+
+2. Luo .env-tiedosto, jonka sisältö on seuraavanlainen:
+
+> DATABASE_URL=\<tietokannan-paikallinen-osoite>   
+> SECRET_KEY=\<salainen-avain>
+
+3. Aktivoi virtuaaliympäristö ja asenna sovelluksen riippuvuudet komennoilla:
+
+`$ python3 -m venv venv`  
+`$ source venv/bin/activate`  
+`$ pip install -r ./requirements.txt`
+
+4. Määritä tietokannan skeema komennolla
+
+`$ psql < schema.sql`
+
+5. Nyt sovellus käynnistyy komennolla
+
+`$ flask run`
+
+
