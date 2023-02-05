@@ -1,0 +1,39 @@
+<h1>Ravintolat</h1>
+{% if session.is_admin == True %}
+<h3>Add a new restaurant</h3>
+<form action="/new_restaurant" method="POST">
+Name: <input type="text" name="name"> <br>
+<p>
+Address: <input type="text" name="address"> <br>
+<p>
+Price range:
+<select name="price_range">
+    <option value="1">€</option>
+    <option value="2">€€</option>
+    <option value="3">€€€</option>
+</select><br>
+<p>
+Category:
+<select name="category">
+    <option value="vegan">vegan</option>
+    <option value="sushi">sushi</option>
+    <option value="poke">poke</option>
+    <option value="hamburger">hamburger</option>
+    <option value="dumplings">dumplings</option>
+    <option value="steak">steak</option>
+    <option value="pizza">pizza</option>
+    <option value="cafe">cafe</option>
+    <option value="fast food">fast food</option>
+    <option value="fine dining">fine dining</option>
+    <option value="nepalese">nepalese</option>
+    <option value="vietnamese">vietnamese</option>
+    <option value="indian">indian</option>
+    <option value="chinese">chinese</option>
+    <option value="ethiopian">ethiopian</option>
+    <option value="mexican">mexican</option>
+    <option value="italian">italian</option>
+</select><br>
+<p>
+<input type="submit" value="Submit">
+</form>
+{% endif %}
