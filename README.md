@@ -5,12 +5,11 @@ Sovelluksessa käyttäjä voi etsiä ravintoloita sekä antaa niille arvosteluja
   - voi luoda uuden tunnuksen **tehty**
   - voi poistaa olemassa olevan tunnuksen
   - voi kirjautua sisään ja ulos luomillaan tunnuksilla **tehty**
-  - näkee alueen ravintolat kartalla
-  - näkee ravintoloiden tiedot (aukioloajat, lyhyt kuvaus, hintaluokka)
+  - näkee ravintoloiden tiedot (aukioloajat, lyhyt kuvaus, hintaluokka) **tehty**
   - voi etsiä ravintoloita tietyillä hakusanoilla
   - voi etsiä ravintoloita valmiiksi muodostetuista kategorioista
   - näkee ravintolat järjestyksessä arvostelujen perusteella
-  - voi antaa ravintolalle arvosanan asteikolla 1-5 sekä halutessaan lyhyen sanallisen arvion (max 1 arvostelu tietylle ravintolalle per käyttäjä)
+  - voi antaa ravintolalle arvosanan asteikolla 1-5 sekä halutessaan lyhyen sanallisen arvion (max 1 arvostelu tietylle ravintolalle per käyttäjä) **aloitettu mutta ei toimi**
   - voi muokata aiemmin antamaansa arviota
 - Ylläpitäjä
   - voi luoda uuden tunnuksen **tehty**
