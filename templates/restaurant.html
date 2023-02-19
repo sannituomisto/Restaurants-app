@@ -1,0 +1,40 @@
+<title>{{ name }}</title>
+<h2>{{ name }}</h2>
+<p>
+<i>{{ description }}</i>
+<p>
+Address: <b>{{ address }}</b>
+<p>
+Price range: <b>{{ price_range }}/€€€</b>
+<p>
+Opening hours:
+<p>
+<table style="width:350px;">
+{% for day in opening_hours %}
+{% if day[0] == 1 %}
+<tr><td>Monday</td><td>{{ day[1] }} - {{ day[2] }}</td></tr>
+{% endif %}
+{% if day[0] == 2 %}
+<tr><td>Tuesday</td><td>{{ day[1] }} - {{ day[2] }}</td></tr>
+{% endif %}
+{% if day[0] == 3 %}
+<tr><td>Wednesday</td><td>{{ day[1] }} - {{ day[2] }}</td></tr>
+{% endif %}
+{% if day[0] == 4 %}
+<tr><td>Thursday</td><td>{{ day[1] }} - {{ day[2] }}</td></tr>
+{% endif %}
+{% if day[0] == 5 %}
+<tr><td>Friday</td><td>{{ day[1] }} - {{ day[2] }}</td></tr>
+{% endif %}
+{% if day[0] == 6 %}
+<tr><td>Saturday</td><td>{{ day[1] }} - {{ day[2] }}</td></tr>
+{% endif %}
+{% if day[0] == 7 %}
+<tr><td>Sunday</td><td>{{ day[1] }} - {{ day[2] }}</td></tr>
+{% endif %}
+{% endfor %}
+<table>
+<p>
+{% if session.user_id %}
+<a href="/review/{{ restaurant_id }}">Add review</a><br>
+{% endif %}
