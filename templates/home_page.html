@@ -22,7 +22,13 @@ Do not have an account?
 Sign up as a <a href="/register_normal_user">user</a> or as an <a href="/register_admin">admin</a>
 <p>
 {% endif %}
-
+<p>
+<hr>
+{% for restaurant in restaurants_info %}
+<li><a href="/restaurant/{{ restaurant.id }}">{{ restaurant.name }}, {{ restaurant.address }}</a>
+<hr>
+{% endfor %}
+</p>
 
 {% if session.is_admin == True %}
 <h3>You have admin priviledges.</h3>

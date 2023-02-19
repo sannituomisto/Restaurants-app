@@ -8,9 +8,9 @@ Address: <input type="text" name="address"> <br>
 <p>
 Price range:
 <select name="price_range">
-    <option value="1">€</option>
-    <option value="2">€€</option>
-    <option value="3">€€€</option>
+    <option value="€">€</option>
+    <option value="€€">€€</option>
+    <option value="€€€">€€€</option>
 </select><br>
 <p>
 Category:
@@ -34,6 +34,30 @@ Category:
     <option value="italian">italian</option>
 </select><br>
 <p>
+Description: <br>
+<p>
+<textarea name="description" rows="4" cols="40">
+</textarea> <br>
+<p>
+Opening Hours:
+<p>
+Monday: <input type="time" name="open_1" value="00:00">  - <input type="time" name="close_1" value="00:00">
+</p>
+Tuesday: <input type="time" name="open_2" value="00:00"> - <input type="time" name="close_2" value="00:00">
+<p>
+Wednesday: <input type="time" name="open_3" value="00:00"> - <input type="time" name="close_3" value="00:00">
+</p>
+Thursday: <input type="time" name="open_4" value="00:00"> - <input type="time" name="close_4" value="00:00">
+<p>
+Friday: <input type="time" name="open_5" value="00:00"> - <input type="time" name="close_5" value="00:00">
+</p>
+Saturday: <input type="time" name="open_6" value="00:00"> - <input type="time" name="close_6" value="00:00">
+<p>
+Sunday: <input type="time" name="open_7" value="00:00"> - <input type="time" name="close_7" value="00:00">
+</p>
 <input type="submit" value="Submit">
+<p>
+<a href="/home_page">Back</a>
+</p>
 </form>
 {% endif %}
