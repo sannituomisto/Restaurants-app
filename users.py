@@ -31,7 +31,6 @@ def register(username,password,is_admin):
 
     return login(username, password)
 
-
 def is_admin():
     try:
         username=session["user_name"]
@@ -41,6 +40,14 @@ def is_admin():
         return is_admin
     except:
         return False
+
+def is_user():
+    try:
+        if session["user_name"]:
+            return True
+    except:
+        return False
+
 
 def logout():
     del session["user_id"]
