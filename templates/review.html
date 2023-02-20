@@ -1,6 +1,16 @@
 <h2>Add review</h2>
 <form action="/review/{{ id }}" method="POST">
-Comment:<br>
+<p>
+Rate <b>{{ name }}</b> by giving 1-5 stars:<br>
+<select name="rating">
+    <option value= "1">1</option> 
+    <option value= "2">2</option>
+    <option value= "3">3</option>
+    <option value= "4">4</option>
+    <option value= "5">5</option>
+</select><br>
+<p>
+Comment(<i>optional</i>):<br>
 <textarea name="comment" rows="6" cols="40"></textarea>
 <p>
 <input type="submit" value="Add">

@@ -138,15 +138,19 @@ def show_info(restaurant_id):
 @app.route("/review/<int:restaurant_id>", methods=["GET", "POST"])
 def review(restaurant_id):
     if request.method == "GET":
+        info=restaurants.get_full_info(restaurant_id)
         if users.is_user():
-            return render_template("review.html", id = restaurant_id)
+            return render_template("review.html", id = restaurant_id, name=info[0])
         else:
             return render_template("error.html", message= "You can not give a review if you are not signed in")
 
     if request.method == "POST":
         if users.is_user():
             comment = request.form["comment"]
-            reviews.add_review(restaurant_id, comment)
+            rating= request.form["rating"]
+            if len(comment) > 400:
+                return render_template("error.html", message="Comment too long")
+            reviews.add_review(restaurant_id, comment, rating)
             return redirect("/restaurant/"+str(restaurant_id))
         else:
             return render_template("error.html", message= "You can not give a review if you are not signed in")

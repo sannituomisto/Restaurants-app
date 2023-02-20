@@ -27,5 +27,6 @@ CREATE TABLE review(
     restaurant_id INTEGER REFERENCES restaurants, 
     username TEXT,
     comment TEXT,
+    rating INT,
     time TIMESTAMP
 );
