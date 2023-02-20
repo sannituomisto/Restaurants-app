@@ -131,9 +131,10 @@ def show_info(restaurant_id):
     if request.method == "GET":
         info = restaurants.get_full_info(restaurant_id)
         o_hours=restaurants.get_opening_hours(restaurant_id)
+        restaurant_reviews=reviews.get_reviews(restaurant_id)
 
         return render_template("restaurant.html", restaurant_id=restaurant_id, name=info[0], address=info[1], price_range=info[2], category=info[3],
-            description=info[4], opening_hours=o_hours) 
+            description=info[4], opening_hours=o_hours, reviews=restaurant_reviews) 
 
 @app.route("/review/<int:restaurant_id>", methods=["GET", "POST"])
 def review(restaurant_id):

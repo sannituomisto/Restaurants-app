@@ -33,8 +33,25 @@ Opening hours:
 <tr><td>Sunday</td><td>{{ day[1] }} - {{ day[2] }}</td></tr>
 {% endif %}
 {% endfor %}
-<table>
-<p>
+<table><p>
+
 {% if session.user_id %}
+<h3>Reviews</h3><p>
+{% if reviews %}
+{% for review in reviews %}
+<i>{{ review.username }}</i>, <i>{{ review.time }}</i><br>
+<b>rating: </b>{{ review.rating }}/5 <br>
+{% if review.comment %}
+<b>comment: </b><br>
+{{ review.comment }}<br>
+{% endif %}
+</p>
+{% endfor %}
+{% else %}
+No reviews
+{% endif %}
+
+<p>
+
 <a href="/review/{{ restaurant_id }}">Add review</a><br>
 {% endif %}

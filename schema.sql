@@ -28,5 +28,5 @@ CREATE TABLE review(
     username TEXT,
     comment TEXT,
     rating INT,
-    time TIMESTAMP
+    time DATE DEFAULT CURRENT_DATE
 );
