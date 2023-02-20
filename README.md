@@ -5,7 +5,7 @@ Sovelluksessa käyttäjä voi etsiä ravintoloita sekä antaa niille arvosteluja
   - voi luoda uuden tunnuksen **tehty**
   - voi poistaa olemassa olevan tunnuksen
   - voi kirjautua sisään ja ulos luomillaan tunnuksilla **tehty**
-  - näkee ravintoloiden tiedot (aukioloajat**keskeneräinen versio**, lyhyt kuvaus, hintaluokka) **tehty**
+  - näkee ravintoloiden tiedot (aukioloajat **keskeneräinen versio**, lyhyt kuvaus, hintaluokka) **tehty**
   - voi etsiä ravintoloita tietyillä hakusanoilla
   - voi etsiä ravintoloita valmiiksi muodostetuista kategorioista
   - näkee ravintolat järjestyksessä arvostelujen perusteella
