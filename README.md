@@ -9,7 +9,7 @@ Sovelluksessa käyttäjä voi etsiä ravintoloita sekä antaa niille arvosteluja
   - voi etsiä ravintoloita tietyillä hakusanoilla
   - voi etsiä ravintoloita valmiiksi muodostetuista kategorioista
   - näkee ravintolat järjestyksessä arvostelujen perusteella
-  - voi antaa ravintolalle arvosanan asteikolla 1-5 sekä halutessaan lyhyen sanallisen arvion (max 1 arvostelu tietylle ravintolalle per käyttäjä) **tehty**
+  - voi antaa ravintolalle arvosanan asteikolla 1-5 sekä halutessaan lyhyen sanallisen arvion (max 1 arvostelu tietylle ravintolalle per käyttäjä) **aloitettu**
   - voi muokata aiemmin antamaansa arviota
 - Ylläpitäjä
   - voi luoda uuden tunnuksen **tehty**
