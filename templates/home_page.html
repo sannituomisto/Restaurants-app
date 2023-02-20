@@ -24,6 +24,9 @@ Sign up as a <a href="/register_normal_user">user</a> or as an <a href="/registe
 {% endif %}
 <p>
 <hr>
+{% if not restaurants_info%}
+No restaurants. Wait for admin to add restaurants.
+{%endif%}
 {% for restaurant in restaurants_info %}
 <li><a href="/restaurant/{{ restaurant.id }}">{{ restaurant.name }}, {{ restaurant.address }}</a>
 <hr>
