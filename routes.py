@@ -1,7 +1,7 @@
 from app import app
 import users
 import restaurants
-import review
+import reviews
 from flask import render_template, request, redirect
 
 @app.route("/")
@@ -126,28 +126,28 @@ def new_restaurant():
         else:
             return render_template("error.html", message= "Only admins can add a new restaurant")
 
-@app.route("/restaurant/<int:restaurant_id>")
+@app.route("/restaurant/<int:restaurant_id>", methods=["GET", "POST"])
 def show_info(restaurant_id):
-    info = restaurants.get_full_info(restaurant_id)
-    o_hours=restaurants.get_opening_hours(restaurant_id)
+    if request.method == "GET":
+        info = restaurants.get_full_info(restaurant_id)
+        o_hours=restaurants.get_opening_hours(restaurant_id)
 
-    return render_template("restaurant.html", restaurant_id=restaurant_id, name=info[0], address=info[1], price_range=info[2], category=info[3],
-        description=info[4], opening_hours=o_hours) 
+        return render_template("restaurant.html", restaurant_id=restaurant_id, name=info[0], address=info[1], price_range=info[2], category=info[3],
+            description=info[4], opening_hours=o_hours) 
 
 @app.route("/review/<int:restaurant_id>", methods=["GET", "POST"])
 def review(restaurant_id):
     if request.method == "GET":
         if users.is_user():
-            return render_template("review.html")
+            return render_template("review.html", id = restaurant_id)
         else:
             return render_template("error.html", message= "You can not give a review if you are not signed in")
 
     if request.method == "POST":
         if users.is_user():
             comment = request.form["comment"]
-            if not review.add_review(restaurant_id, comment):
-                return render_template("error.html", message="Submit failed")
-            return redirect("/restaurant/" + str(restaurant_id))
+            reviews.add_review(restaurant_id, comment)
+            return redirect("/restaurant/"+str(restaurant_id))
         else:
             return render_template("error.html", message= "You can not give a review if you are not signed in")
         
