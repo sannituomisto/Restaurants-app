@@ -1,6 +1,6 @@
 import os
 from database import db
-from flask import session
+from flask import session, abort, request
 from sqlalchemy.sql import text
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -71,6 +71,9 @@ def logout():
     del session["user_name"]
     del session["is_admin"]
 
+def check_csrf():
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
 
 
     

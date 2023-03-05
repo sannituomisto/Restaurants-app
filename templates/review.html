@@ -17,6 +17,7 @@ Comment (<i>optional</i>):<br>
 <textarea name="comment" rows="6" cols="35"></textarea>
 <p>
 <input id="other_buttons" type="submit" value="Add">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 <br>
 <br>

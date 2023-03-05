@@ -6,6 +6,7 @@
 <p>
 <form action="/remove_user" method="POST">
     <input id="remove_user" type="submit" value="Remove user">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 <a id="other_buttons" href="/logout">Log out</a>
 {% else %}
@@ -28,6 +29,7 @@ Sign up as a <a href="/register_normal_user">user</a> or as an <a href="/registe
 {% endif %}
 <hr>
 <p>
+
 <h3>Restaurants</h3>
 <form action="/home_page" method="POST">
     <select id="sort_drop_down" name="sort"  onchange="this.form.submit()">
@@ -50,6 +52,7 @@ No restaurants. Wait for admin to add restaurants.
 </ul>
 </div>
 <p>
+
 {% if session.user_id %}
 {% if favorites %}
 <h3>Favorites</h3>

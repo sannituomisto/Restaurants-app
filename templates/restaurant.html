@@ -7,11 +7,13 @@
 <form action="/add_favorite" method="POST">
     <input id="favorite" type="submit" value="Add to favorites">
     <input type="hidden" name="restaurant_id" value="{{ restaurant_id }}">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 {% else %}
 <form action="/remove_favorite" method="POST">
     <input id="favorite" type="submit" value="Remove from favorites">
     <input type="hidden" name="restaurant_id" value="{{ restaurant_id }}">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 {% endif %}
 {% endif %}
@@ -92,6 +94,7 @@ Opening hours:
     <input id="remove_review_button" type="submit" value="Remove review">
     <input type="hidden" name="review_id" value="{{ review.id }}">
     <input type="hidden" name="restaurant_id" value="{{ restaurant_id }}">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 {% endif %}
 <hr>
@@ -110,6 +113,7 @@ No reviews
 <form action="/remove_restaurant" method="POST">
     <input id="remove_restaurant" type="submit" value="Remove restaurant">
     <input type="hidden" name="restaurant_id" value="{{ restaurant_id }}">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 {% endif %}
 {% endblock %}

@@ -108,6 +108,7 @@ def new_restaurant():
 
 
     if request.method == "POST":
+        users.check_csrf()
         if users.is_admin:
             name = request.form["name"]
             address = request.form["address"]
@@ -173,6 +174,7 @@ def review(restaurant_id):
             return render_template("error.html", message= "You can not give a review if you are not signed in")
 
     if request.method == "POST":
+        users.check_csrf()
         if users.is_user():
             comment = request.form["comment"]
             rating= request.form["rating"]
@@ -193,6 +195,7 @@ def review(restaurant_id):
 @app.route("/add_favorite", methods=["POST"])
 def add_favorite():
     if request.method == "POST":
+        users.check_csrf()
         if users.is_user:
             restaurant_id = request.form["restaurant_id"]
             if favorites.check_if_in_favorites_already(restaurant_id):
@@ -206,6 +209,7 @@ def add_favorite():
 @app.route("/remove_restaurant", methods=["POST"])
 def remove_restaurant():
     if request.method == "POST":
+        users.check_csrf()
         if users.is_admin:
             restaurant_id = request.form["restaurant_id"]
             restaurants.remove_restaurant(restaurant_id)
@@ -214,6 +218,7 @@ def remove_restaurant():
 @app.route("/remove_review", methods=["POST"])
 def remove_review():
     if request.method == "POST":
+        users.check_csrf()
         if users.is_user:
             review_id = request.form["review_id"]
             restaurant_id = request.form["restaurant_id"]
@@ -223,6 +228,7 @@ def remove_review():
 @app.route("/remove_favorite", methods=["POST"])
 def remove_favorite():
     if request.method == "POST":
+        users.check_csrf()
         if users.is_user:
             restaurant_id = request.form["restaurant_id"]
             favorites.remove_from_favorites(restaurant_id)
@@ -231,6 +237,7 @@ def remove_favorite():
 @app.route("/remove_user", methods=["POST"])
 def remove_user():
     if request.method == "POST":
+        users.check_csrf()
         if users.is_user:
             username=users.get_user()
             users.delete_user(username)
