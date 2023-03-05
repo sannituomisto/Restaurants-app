@@ -41,4 +41,7 @@ Sovelluksessa käyttäjä voi etsiä ravintoloita sekä antaa niille arvosteluja
 
 `$ flask run`
 
+## Huom
+Sovelluksessa ei ole valmiina ravintoloita vaan admin-käyttäjän täytyy itse lisätä ravintoloita sovellukseen.
+
 
