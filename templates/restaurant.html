@@ -90,7 +90,6 @@ Opening hours:
 <div style="max-height:100px;max-width:200px;overflow-y:scroll;padding-right:1em;">
 {{ review.comment }}
 </div>
-<br>
 {% endif %}
 {% if review.username == user or session.is_admin == True %}
 <form action="/remove_review" method="POST">
