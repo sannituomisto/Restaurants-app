@@ -90,6 +90,10 @@ Opening Hours:
             return true;
         }
         </script>
+        
+{% if errormessage %}
+<p style="color: red;">{{ errormessage }}</p>
+{% endif %}
 
 {% endif %}
 {% endblock %}

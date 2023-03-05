@@ -21,7 +21,7 @@ def login():
         if users.login(username, password):
             return redirect("/home_page")
         
-        return render_template("home_page.html", errormessage = "Wrong username or password")
+        return render_template("home_page.html", restaurants_info=restaurants.get_short_info(), errormessage = "Wrong username or password.")
 
 @app.route("/register_normal_user", methods=["GET", "POST"])
 def register_normal_user():
@@ -43,7 +43,7 @@ def register_normal_user():
             return render_template("error.html", message="Password must be at least 4 characters")
 
         if not users.register(username, password1, False):
-            return render_template("register_normal_user.html", errormessage="This username already exists.")
+            return render_template("register_normal_user.html", errormessage="This username already exists")
 
         return redirect("/home_page")
 
@@ -62,13 +62,13 @@ def register_admin():
             return render_template("error.html", message="Username must have 1-15 characters")
 
         if password1 != password2:
-            return render_template("error.html", message="Passwords do not match")
+            return render_template("error.html", message="Passwords do not match.")
 
         if len(password1) < 4 or len(password1) > 20:
             return render_template("error.html", message="Password must be at least 4 characters")
 
         if not users.register(username, password1, True):
-            return render_template("register_admin.html", errormessage="This username already exists.")
+            return render_template("register_admin.html", errormessage="This username already exists")
 
         return redirect("/home_page")
 
@@ -99,7 +99,7 @@ def new_restaurant():
         if users.is_admin:
             return render_template("new_restaurant.html")
         else:
-            return render_template("error.html", message= "Only admins can add a new restaurant")
+            return render_template("error.html", message= "Only admins can add a new restaurant.")
 
     if request.method == "POST":
         users.check_csrf()
@@ -129,7 +129,7 @@ def new_restaurant():
                 return render_template("error.html", message="Invalid description")
 
             if not restaurants.new_restaurant(name, address, price_range, category, description):
-                return render_template("error.html", message="Submit failed. There is already restaurant with this address.")
+                return render_template("new_restaurant.html", errormessage="Submit failed. There is already restaurant with this address.")
 
             for day in opening_hours:
                 if not restaurants.add_opening_hours(restaurants.restaurant_id(address), day, opening_hours[day][0], opening_hours[day][1], opening_hours[day][2]):
