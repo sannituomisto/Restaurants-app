@@ -3,20 +3,20 @@ Sovelluksessa käyttäjä voi etsiä ravintoloita sekä antaa niille arvosteluja
 ## Toiminnallisuudet
 - Käyttäjä
   - voi luoda uuden tunnuksen **tehty**
-  - voi poistaa olemassa olevan tunnuksen
+  - voi poistaa olemassa olevan tunnuksen **tehty**
   - voi kirjautua sisään ja ulos luomillaan tunnuksilla **tehty**
-  - näkee ravintoloiden tiedot (aukioloajat **keskeneräinen versio**, lyhyt kuvaus, hintaluokka) **tehty**
-  - voi etsiä ravintoloita tietyillä hakusanoilla
-  - voi etsiä ravintoloita valmiiksi muodostetuista kategorioista
-  - näkee ravintolat järjestyksessä arvostelujen perusteella
-  - voi antaa ravintolalle arvosanan asteikolla 1-5 sekä halutessaan lyhyen sanallisen arvion (max 1 arvostelu tietylle ravintolalle per käyttäjä) **tehty**
-  - voi muokata aiemmin antamaansa arviota
+  - voi lisätä ravintoloita suosikkeihin ja poistaa ravintoloita suosikeista **tehty**
+  - näkee ravintoloiden tiedot (aukioloajat, lyhyt kuvaus, hintaluokka) **tehty**
+  - näkee ravintolat järjestyksessä arvostelujen perusteella **tehty**
+  - näkee ravintolat järjestyksessä hintaluokan perusteella **tehty**
+  - voi antaa ravintolalle arvosanan asteikolla 1-5 sekä halutessaan lyhyen sanallisen arvion **tehty**
+  - voi poistaa aiemmin antamaansa arvion **tehty**
 - Ylläpitäjä
   - voi luoda uuden tunnuksen **tehty**
-  - voi poistaa olemassa olevan tunnuksen
+  - voi poistaa olemassa olevan tunnuksen **tehty**
   - voi kirjautua sisään ja ulos luomillaan tunnuksilla **tehty**
-  - voi lisätä **tehty**, poistaa ja muokata ravintoloita
-  - voi poistaa käyttäjien antamia epäasiallisia arvosteluja
+  - voi lisätä ja poistaa ravintoloita **tehty**
+  - voi poistaa käyttäjien antamia epäasiallisia arvosteluja **tehty**
   - voi järjestää ravintolat eri kategorioihin **tehty**
   
 ## Sovelluksen käynnistäminen paikallisesti
