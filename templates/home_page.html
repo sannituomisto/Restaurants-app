@@ -4,7 +4,7 @@
 {% if session.user_id %}
 <b>{{ session.user_name }}</b> is logged in
 <p>
-<form action="/remove_user" method="POST">
+<form action="/remove_user" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
     <input id="remove_user" type="submit" value="Remove user">
     <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
@@ -21,6 +21,9 @@ You are not logged in.
     <p>
     <input id="login" type="submit" value="Login">
 </form>
+{% if errormessage %}
+<p style="color: red;">{{ errormessage }}</p>
+{% endif %}
 <p>
 Do not have an account?
 <p>
@@ -74,3 +77,4 @@ No restaurants. Wait for admin to add restaurants.
 <a id="other_buttons" href="/new_restaurant">Add a new restaurant</a>
 {% endif %}
 {% endblock %}
+

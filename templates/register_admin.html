@@ -1,8 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
 <h2>Register as a admin</h2>
-<form action="/register_admin" method="POST">
+<form action="/register_admin" method="POST" onsubmit="return check(this)">
 Username: <br><input type="text" name="username">
+{% if errormessage %}
+<br>
+<p style="color: red;">{{ errormessage }}</p>
+{% endif %}
 <p>
 Password: <br><input type="password" name="password1">
 <p>
@@ -10,4 +14,22 @@ Confirm password: <br><input type="password" name="password2">
 </p>
 <input id="other_buttons" type="submit" value="Register">
 </form>
+
+<script>
+    function check(form) {
+        if (form.username.value.length > 15 || form.username.value.length < 1) {
+            alert("Username must have 1-15 characters.");
+            return false;
+        }
+        if (form.password1.value.length > 20 || form.password1.value.length < 4) {
+            alert("Password must have 4-20 characters.");
+            return false;
+        }
+        if (form.password1.value != form.password2.value) {
+            alert("Passwords do not match.");
+            return false;
+        }
+        return true;
+    }
+    </script>
 {% endblock %}

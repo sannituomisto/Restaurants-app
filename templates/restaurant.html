@@ -87,7 +87,10 @@ Opening hours:
 <b>rating: </b>{{ review.rating }}/5<br>
 {% if review.comment %}
 <b>comment:</b><br>
-{{ review.comment }}<br>
+<div style="max-height:100px;max-width:200px;overflow-y:scroll;padding-right:1em;">
+{{ review.comment }}
+</div>
+<br>
 {% endif %}
 {% if review.username == user or session.is_admin == True %}
 <form action="/remove_review" method="POST">
@@ -110,8 +113,8 @@ No reviews
 <br>
 <br>
 {% if session.is_admin == True %}
-<form action="/remove_restaurant" method="POST">
-    <input id="remove_restaurant" type="submit" value="Remove restaurant">
+<form action="/remove_restaurant" method="POST" onsubmit="return confirm('Are you sure you want to delete this restaurant?');">
+    <input id="remove_restaurant" type="submit" value="Delete restaurant">
     <input type="hidden" name="restaurant_id" value="{{ restaurant_id }}">
     <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>

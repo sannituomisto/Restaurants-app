@@ -2,7 +2,7 @@
 {% block content %}
 {% if session.is_admin == True %}
 <h3>Add a new restaurant</h3>
-<form action="/new_restaurant" method="POST">
+<form action="/new_restaurant" method="POST" onsubmit="return check(this)">
 Name: <input type="text" name="name"> <br>
 <p>
 Address: <input type="text" name="address"> <br>
@@ -64,5 +64,32 @@ Opening Hours:
 <input id="new_restaurant" type="submit" value="Submit">
 <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
+
+<script>
+        function check(form) {
+            if (form.name.value.length > 40 || form.name.value.length < 1) {
+                alert("Invalid name.");
+                return false;
+            }
+            if (form.address.value.length > 40 || form.address.value.length < 1) {
+                alert("Invalid address.");
+                return false;
+            }
+            if (form.price_range.value == "none") {
+                alert("Please select price range.");
+                return false;
+            }
+            if (form.category.value == "none") {
+                alert("Please select category.");
+                return false;
+            }
+            if (form.description.value.length > 200 || form.description.value.length < 1) {
+                alert("Invalid description.");
+                return false;
+            }
+            return true;
+        }
+        </script>
+
 {% endif %}
 {% endblock %}

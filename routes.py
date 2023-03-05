@@ -19,7 +19,7 @@ def login():
         password = request.form["password"]
         if users.login(username, password):
             return redirect("/home_page")
-        return render_template("error.html", message = "Wrong username or password")
+        return render_template("home_page.html", errormessage = "Wrong username or password")
 
 @app.route("/register_normal_user", methods=["GET", "POST"])
 def register_normal_user():
@@ -37,14 +37,11 @@ def register_normal_user():
         if password1 != password2:
             return render_template("error.html", message="Passwords do not match")
 
-        if len(password1) < 4:
+        if len(password1) < 4 or len(password1) > 20:
             return render_template("error.html", message="Password must be at least 4 characters")
 
-        if any(char.isdigit() for char in password1) == False:
-            return render_template("error.html", message="Password must contain numbers")
-
         if not users.register(username, password1, False):
-            return render_template("error.html", message="Registration failed")
+            return render_template("register_normal_user.html", errormessage="This username already exists.")
 
         return redirect("/home_page")
 
@@ -65,14 +62,11 @@ def register_admin():
         if password1 != password2:
             return render_template("error.html", message="Passwords do not match")
 
-        if len(password1) < 4:
+        if len(password1) < 4 or len(password1) > 20:
             return render_template("error.html", message="Password must be at least 4 characters")
 
-        if any(char.isdigit() for char in password1) == False:
-            return render_template("error.html", message="Password must contain numbers")
-
         if not users.register(username, password1, True):
-            return render_template("error.html", message="Registration failed")
+            return render_template("register_admin.html", errormessage="This username already exists.")
 
         return redirect("/home_page")
 
