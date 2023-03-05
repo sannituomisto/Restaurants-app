@@ -19,5 +19,22 @@ def get_reviews(restaurant_id):
     result = db.session.execute(sql, {"restaurant_id":restaurant_id})
     return result.fetchall()
 
+def remove_review(review_id):
+    sql = text("DELETE FROM review WHERE id = :review_id")
+    db.session.execute(sql, {"review_id":review_id})
+    db.session.commit()
+
+def get_average_rating(restaurant_id):
+    sql = text("SELECT AVG(rating), COUNT(rating) FROM review WHERE restaurant_id = :restaurant_id")
+    result = db.session.execute(sql, {"restaurant_id":restaurant_id}).fetchone()
+    count=result[1]
+    average=result[0]
+    if count > 0:
+        return (("%.2f" % average, count))
+    else:
+        return ((average, count))
+
+
+
 
 
