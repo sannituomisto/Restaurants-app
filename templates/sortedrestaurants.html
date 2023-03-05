@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if sort_value == "rating" %}
+<h2>Top rated</h2>
+{% elif sort_value == "lowest_price" %}
+<h2>€ to €€€</h2>
+{% elif sort_value == "highest_price" %}
+<h2>€€€ to €</h2>
+{%endif%}
+<p>
+<div class="scroll_sort">
+<ul>
+{% for restaurant in sortedrestaurants %}
+<li><a href="/restaurant/{{ restaurant.id }}">{{ restaurant.name }}, {{ restaurant.address }}</a>
+{% endfor %}
+</ul>
+</div>
+{% endblock %}

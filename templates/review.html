@@ -1,8 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
 <h2>Add review</h2>
-<form action="/review/{{ id }}" method="POST">
+<form action="/review/{{ restaurant_id }}" method="POST">
 <p>
 Rate {{ name }} by giving 1-5 stars: 
-<select name="rating">
+<select id="new_drop_down" name="rating">
+    <option value="none" selected hidden >Select
     <option value= "1">1</option> 
     <option value= "2">2</option>
     <option value= "3">3</option>
@@ -13,5 +16,9 @@ Rate {{ name }} by giving 1-5 stars:
 Comment (<i>optional</i>):<br>
 <textarea name="comment" rows="6" cols="35"></textarea>
 <p>
-<input type="submit" value="Add">
+<input id="other_buttons" type="submit" value="Add">
 </form>
+<br>
+<br>
+<a id="other_buttons" href="/restaurant/{{ restaurant_id }}">Back to restaurants page</a>
+{% endblock %}

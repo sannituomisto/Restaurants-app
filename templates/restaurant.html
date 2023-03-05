@@ -1,57 +1,115 @@
+{% extends "layout.html" %}
+{% block content %}
 <title>{{ name }}</title>
 <h2>{{ name }}</h2>
+{% if session.user_id %}
+{% if favorite == True %}
+<form action="/add_favorite" method="POST">
+    <input id="favorite" type="submit" value="Add to favorites">
+    <input type="hidden" name="restaurant_id" value="{{ restaurant_id }}">
+</form>
+{% else %}
+<form action="/remove_favorite" method="POST">
+    <input id="favorite" type="submit" value="Remove from favorites">
+    <input type="hidden" name="restaurant_id" value="{{ restaurant_id }}">
+</form>
+{% endif %}
+{% endif %}
 <p>
 <i>{{ description }}</i>
 <p>
 Address: <b>{{ address }}</b>
 <p>
-Price range: <b>{{ price_range }}/€€€</b>
+Price range:
+{% for i in range(price_range) %}
+<b>€</b>
+{% endfor %}
+<b> / € € €</b>
 <p>
 Opening hours:
 <p>
-<table style="width:350px;">
+<table style="width:250px;">
 {% for day in opening_hours %}
-{% if day[0] == 1 %}
+{% if day[0] == 1 and day[3] == "o" %}
 <tr><td>Monday</td><td>{{ day[1] }} - {{ day[2] }}</td></tr>
+{% elif day[0] == 1 and day[3] == "c" %}
+<tr><td>Monday</td><td>Closed</td></tr>
 {% endif %}
-{% if day[0] == 2 %}
+{% if day[0] == 2 and day[3] == "o" %}
 <tr><td>Tuesday</td><td>{{ day[1] }} - {{ day[2] }}</td></tr>
+{% elif day[0] == 2 and day[3] == "c" %}
+<tr><td>Tuesday</td><td>Closed</td></tr>
 {% endif %}
-{% if day[0] == 3 %}
+{% if day[0] == 3 and day[3] == "o" %}
 <tr><td>Wednesday</td><td>{{ day[1] }} - {{ day[2] }}</td></tr>
+{% elif day[0] == 3 and day[3] == "c" %}
+<tr><td>Wednesday</td><td>Closed</td></tr>
 {% endif %}
-{% if day[0] == 4 %}
+{% if day[0] == 4 and day[3] == "o" %}
 <tr><td>Thursday</td><td>{{ day[1] }} - {{ day[2] }}</td></tr>
+{% elif day[0] == 4 and day[3] == "c" %}
+<tr><td>Thursday</td><td>Closed</td></tr>
 {% endif %}
-{% if day[0] == 5 %}
+{% if day[0] == 5 and day[3] == "o" %}
 <tr><td>Friday</td><td>{{ day[1] }} - {{ day[2] }}</td></tr>
+{% elif day[0] == 5 and day[3] == "c" %}
+<tr><td>Friday</td><td>Closed</td></tr>
 {% endif %}
-{% if day[0] == 6 %}
+{% if day[0] == 6 and day[3] == "o" %}
 <tr><td>Saturday</td><td>{{ day[1] }} - {{ day[2] }}</td></tr>
+{% elif day[0] == 6 and day[3] == "c" %}
+<tr><td>Saturday</td><td>Closed</td></tr>
 {% endif %}
-{% if day[0] == 7 %}
+{% if day[0] == 7 and day[3] == "o" %}
 <tr><td>Sunday</td><td>{{ day[1] }} - {{ day[2] }}</td></tr>
+{% elif day[0] == 7 and day[3] == "c" %}
+<tr><td>Sunday</td><td>Closed</td></tr>
 {% endif %}
 {% endfor %}
-<table><p>
+</table>
+<p>
 
 {% if session.user_id %}
-<h3>Reviews</h3><p>
+<h3>Reviews</h3>
+{% if average_rating[1] != 0 %}
+<b>{{average_rating[1]}}</b> reviews
+<p>
+<b>Average rating</b>: {{ average_rating[0] }}/5
+{% endif %}
+<p>
 {% if reviews %}
+<div class="scroll_review">
+<hr>
 {% for review in reviews %}
 <i>{{ review.username }}</i>, <i>{{ review.time }}</i><br>
-<b>rating: </b>{{ review.rating }}/5 <br>
+<b>rating: </b>{{ review.rating }}/5<br>
 {% if review.comment %}
-<b>comment: </b><br>
+<b>comment:</b><br>
 {{ review.comment }}<br>
 {% endif %}
-</p>
+{% if review.username == user or session.is_admin == True %}
+<form action="/remove_review" method="POST">
+    <input id="remove_review_button" type="submit" value="Remove review">
+    <input type="hidden" name="review_id" value="{{ review.id }}">
+    <input type="hidden" name="restaurant_id" value="{{ restaurant_id }}">
+</form>
+{% endif %}
+<hr>
 {% endfor %}
+</div>
 {% else %}
 No reviews
 {% endif %}
 <p>
-<a href="/review/{{ restaurant_id }}">Add review</a><br>
+<a id="other_buttons" href="/review/{{ restaurant_id }}">Add review</a><br>
 {% endif %}
-<p>
-<a href="/home_page">Back</a>
+<br>
+<br>
+<br>
+{% if session.is_admin == True %}
+<form action="/remove_restaurant" method="POST">
+    <input id="remove_restaurant" type="submit" value="Remove restaurant">
+    <input type="hidden" name="restaurant_id" value="{{ restaurant_id }}">
+</form>
+{% endif %}
+{% endblock %}

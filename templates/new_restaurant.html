@@ -1,4 +1,5 @@
-<h1>Ravintolat</h1>
+{% extends "layout.html" %}
+{% block content %}
 {% if session.is_admin == True %}
 <h3>Add a new restaurant</h3>
 <form action="/new_restaurant" method="POST">
@@ -7,31 +8,33 @@ Name: <input type="text" name="name"> <br>
 Address: <input type="text" name="address"> <br>
 <p>
 Price range:
-<select name="price_range">
-    <option value="€">€</option>
-    <option value="€€">€€</option>
-    <option value="€€€">€€€</option>
+<select id="new_drop_down" name="price_range">
+        <option value="none" selected hidden >Select
+        <option value="1">€</option>
+        <option value="2">€€</option>
+        <option value="3">€€€</option>
 </select><br>
 <p>
 Category:
-<select name="category">
-    <option value="vegan">vegan</option>
-    <option value="sushi">sushi</option>
-    <option value="poke">poke</option>
-    <option value="hamburger">hamburger</option>
-    <option value="dumplings">dumplings</option>
-    <option value="steak">steak</option>
-    <option value="pizza">pizza</option>
-    <option value="cafe">cafe</option>
-    <option value="fast food">fast food</option>
-    <option value="fine dining">fine dining</option>
-    <option value="nepalese">nepalese</option>
-    <option value="vietnamese">vietnamese</option>
-    <option value="indian">indian</option>
-    <option value="chinese">chinese</option>
-    <option value="ethiopian">ethiopian</option>
-    <option value="mexican">mexican</option>
-    <option value="italian">italian</option>
+<select id="new_drop_down" name="category">
+        <option value="none" selected hidden >Select
+        <option value="vegan">vegan</option>
+        <option value="sushi">sushi</option>
+        <option value="poke">poke</option>
+        <option value="hamburger">hamburger</option>
+        <option value="dumplings">dumplings</option>
+        <option value="steak">steak</option>
+        <option value="pizza">pizza</option>
+        <option value="cafe">cafe</option>
+        <option value="fast food">fast food</option>
+        <option value="fine dining">fine dining</option>
+        <option value="nepalese">nepalese</option>
+        <option value="vietnamese">vietnamese</option>
+        <option value="indian">indian</option>
+        <option value="chinese">chinese</option>
+        <option value="ethiopian">ethiopian</option>
+        <option value="mexican">mexican</option>
+        <option value="italian">italian</option>
 </select><br>
 <p>
 Description: <br>
@@ -41,23 +44,24 @@ Description: <br>
 <p>
 Opening Hours:
 <p>
-Monday: <input type="time" name="open_1" value="00:00">  - <input type="time" name="close_1" value="00:00">
-</p>
-Tuesday: <input type="time" name="open_2" value="00:00"> - <input type="time" name="close_2" value="00:00">
+<table style="width:470px;">
+<tr><td>Monday </td><td> <input type="time" name="open_1">  - <input type="time" name="close_1">
+        <input type="radio" name="status_1" value="o" checked>Open <input type="radio" name="status_1" value="c">Closed </td></tr>
+<tr><td>Tuesday </td><td> <input type="time" name="open_2"> - <input type="time" name="close_2">
+         <input type="radio" name="status_2" value="o" checked>Open <input type="radio" name="status_2" value="c">Closed </td></tr>
+<tr><td>Wednesday </td><td> <input type="time" name="open_3"> - <input type="time" name="close_3">
+           <input type="radio" name="status_3" value="o" checked>Open <input type="radio" name="status_3" value="c">Closed </td></tr>
+<tr><td>Thursday </td><td> <input type="time" name="open_4"> - <input type="time" name="close_4">
+          <input type="radio" name="status_4" value="o" checked>Open <input type="radio" name="status_4" value="c">Closed </td></tr>
+<tr><td>Friday </td><td> <input type="time" name="open_5"> - <input type="time" name="close_5">
+        <input type="radio" name="status_5" value="o" checked>Open <input type="radio" name="status_5" value="c">Closed </td></tr>
+<tr><td>Saturday </td><td> <input type="time" name="open_6"> - <input type="time" name="close_6">
+          <input type="radio" name="status_6" value="o" checked>Open <input type="radio" name="status_6" value="c">Closed </td></tr>
+<tr><td>Sunday </td><td> <input type="time" name="open_7"> - <input type="time" name="close_7">
+        <input type="radio" name="status_7" value="o" checked>Open <input type="radio" name="status_7" value="c">Closed </td></tr>
+</table>
 <p>
-Wednesday: <input type="time" name="open_3" value="00:00"> - <input type="time" name="close_3" value="00:00">
-</p>
-Thursday: <input type="time" name="open_4" value="00:00"> - <input type="time" name="close_4" value="00:00">
-<p>
-Friday: <input type="time" name="open_5" value="00:00"> - <input type="time" name="close_5" value="00:00">
-</p>
-Saturday: <input type="time" name="open_6" value="00:00"> - <input type="time" name="close_6" value="00:00">
-<p>
-Sunday: <input type="time" name="open_7" value="00:00"> - <input type="time" name="close_7" value="00:00">
-</p>
-<input type="submit" value="Submit">
-<p>
-<a href="/home_page">Back</a>
-</p>
+<input id="new_restaurant" type="submit" value="Submit">
 </form>
 {% endif %}
+{% endblock %}

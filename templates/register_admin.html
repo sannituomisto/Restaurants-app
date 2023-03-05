@@ -1,3 +1,5 @@
+{% extends "layout.html" %}
+{% block content %}
 <h2>Register as a admin</h2>
 <form action="/register_admin" method="POST">
 Username: <br><input type="text" name="username">
@@ -6,7 +8,6 @@ Password: <br><input type="password" name="password1">
 <p>
 Confirm password: <br><input type="password" name="password2">
 </p>
-<input type="submit" value="Register">
+<input id="other_buttons" type="submit" value="Register">
 </form>
-<p>
-<a href="/login">Back to login</a>
+{% endblock %}

@@ -1,20 +1,24 @@
-<h1>Ravintolat</h1>
+{% extends "layout.html" %}
+{% block content %}
 
 {% if session.user_id %}
 <b>{{ session.user_name }}</b> is logged in
 <p>
-<a href="/logout">Log out</a>
-<p>
+<form action="/remove_user" method="POST">
+    <input id="remove_user" type="submit" value="Remove user">
+</form>
+<a id="other_buttons" href="/logout">Log out</a>
 {% else %}
 You are not logged in.
 <p>
+<hr>
 <h3>Login</h3>
 <form action="/login" method="POST">
-Username: <br><input type="text" name="username">
-<p>
-Password: <br><input type="password" name="password">
-<p>
-<input type="submit" value="Login">
+    Username: <br><input type="text" name="username">
+    <p>
+    Password: <br><input type="password" name="password">
+    <p>
+    <input id="login" type="submit" value="Login">
 </form>
 <p>
 Do not have an account?
@@ -22,22 +26,48 @@ Do not have an account?
 Sign up as a <a href="/register_normal_user">user</a> or as an <a href="/register_admin">admin</a>
 <p>
 {% endif %}
-<p>
 <hr>
+<p>
+<h3>Restaurants</h3>
+<form action="/home_page" method="POST">
+    <select id="sort_drop_down" name="sort"  onchange="this.form.submit()">
+        <option value="none" selected disabled hidden> See restaurants sorted by
+        {% if session.user_id %}
+        <option value="rating"> Top rated
+        {%endif%}
+        <option value="lowest_price"> € to €€€
+        <option value="highest_price"> €€€ to €
+    </select>
+</form>
 {% if not restaurants_info%}
 No restaurants. Wait for admin to add restaurants.
 {%endif%}
+<div class="scroll">
+<ul>
 {% for restaurant in restaurants_info %}
-<li><a href="/restaurant/{{ restaurant.id }}">{{ restaurant.name }}, {{ restaurant.address }}</a>
-<hr>
+<li><a href="/restaurant/{{ restaurant.id }}">{{ restaurant.name }}, {{ restaurant.address }}</a></li>
 {% endfor %}
+</ul>
+</div>
+<p>
+{% if session.user_id %}
+{% if favorites %}
+<h3>Favorites</h3>
+<div class="scroll">
+<ul>
+{% for favorite in favorites %}
+<li><a href="/restaurant/{{ favorite.id }}">{{ favorite.name }}, {{ favorite.address }}</a>
+{% endfor %}
+</ul>
+</div>
+<hr>
+{%endif%}
+{%endif%}
 </p>
 
 {% if session.is_admin == True %}
-<h3>You have admin priviledges.</h3>
+<b>You have admin priviledges.</b>
 <p>
-<a href="/new_restaurant">Add a new restaurant</a>
-<p>
-Remove a restaurant
-<p>
+<a id="other_buttons" href="/new_restaurant">Add a new restaurant</a>
 {% endif %}
+{% endblock %}
