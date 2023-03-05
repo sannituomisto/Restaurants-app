@@ -31,6 +31,17 @@ def register(username,password,is_admin):
 
     return login(username, password)
 
+def delete_user(username):
+    try:
+        sql = text("DELETE FROM users WHERE username=:username")
+        db.session.execute(sql, {"username":username})
+        db.session.commit()
+    except:
+        return False
+    
+    return logout()
+
+
 def is_admin():
     try:
         username=session["user_name"]
@@ -47,7 +58,13 @@ def is_user():
             return True
     except:
         return False
-
+    
+def get_user():
+    try:
+        if session["user_name"]:
+            return session["user_name"]
+    except:
+        return False
 
 def logout():
     del session["user_id"]
