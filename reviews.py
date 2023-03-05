@@ -1,7 +1,6 @@
-from database import db
 from sqlalchemy.sql import text
-import datetime
 from flask import session
+from database import db
 
 def add_review(restaurant_id, comment, rating):
     username = session["user_name"]

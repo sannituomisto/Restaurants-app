@@ -1,5 +1,5 @@
-from database import db
 from sqlalchemy.sql import text
+from database import db
 
 def new_restaurant(name, address, price_range, category, description):
     try:

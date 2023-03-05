@@ -17,8 +17,10 @@ def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
+
         if users.login(username, password):
             return redirect("/home_page")
+        
         return render_template("home_page.html", errormessage = "Wrong username or password")
 
 @app.route("/register_normal_user", methods=["GET", "POST"])
@@ -91,7 +93,6 @@ def home_page():
 def sorted_list(sort_value):
         return render_template("sortedrestaurants.html", sortedrestaurants=restaurants.get_short_info(sort_value), sort_value=sort_value)
     
-
 @app.route("/new_restaurant", methods=["GET", "POST"])
 def new_restaurant():
     if request.method == "GET":
@@ -99,7 +100,6 @@ def new_restaurant():
             return render_template("new_restaurant.html")
         else:
             return render_template("error.html", message= "Only admins can add a new restaurant")
-
 
     if request.method == "POST":
         users.check_csrf()
@@ -182,7 +182,6 @@ def review(restaurant_id):
             reviews.add_review(restaurant_id, comment, rating)
 
             return redirect("/restaurant/"+str(restaurant_id))
-        
         else:
             return render_template("error.html", message= "You can not give a review if you are not signed in")
 

@@ -1,16 +1,16 @@
-from database import db
 from sqlalchemy.sql import text
 from flask import session
+from database import db
 
 def add_to_favorites(restaurant_id):
-    #try:
+    try:
         username = session["user_name"]
         sql = text("""INSERT INTO favorites (username, restaurant_id) VALUES (:username, :restaurant_id)""")
         db.session.execute(sql, {"username":username, "restaurant_id":restaurant_id})
         db.session.commit()
-        #return True
-    #except:
-        #return False
+        return True
+    except:
+        return False
 
 def check_if_in_favorites_already(restaurant_id):
     username = session["user_name"]
@@ -41,4 +41,4 @@ def remove_from_favorites(restaurant_id):
     sql = text("DELETE FROM favorites WHERE restaurant_id = :restaurant_id and username = :username")
     db.session.execute(sql, {"restaurant_id":restaurant_id, "username":username})
     db.session.commit()
-
+    

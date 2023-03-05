@@ -60,11 +60,11 @@ No restaurants. Wait for admin to add restaurants.
 {% if favorites %}
 <h3>Favorites</h3>
 <div class="scroll">
-<ul>
+    <ul>
 {% for favorite in favorites %}
-<li><a href="/restaurant/{{ favorite.id }}">{{ favorite.name }}, {{ favorite.address }}</a>
+    <li><a href="/restaurant/{{ favorite.id }}">{{ favorite.name }}, {{ favorite.address }}</a>
 {% endfor %}
-</ul>
+    </ul>
 </div>
 <hr>
 {%endif%}
@@ -77,4 +77,3 @@ No restaurants. Wait for admin to add restaurants.
 <a id="other_buttons" href="/new_restaurant">Add a new restaurant</a>
 {% endif %}
 {% endblock %}
-
