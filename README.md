@@ -1,4 +1,4 @@
-# Ravintolat
+# Restaurants-app
 Sovelluksessa käyttäjä voi etsiä ravintoloita sekä antaa niille arvosteluja.
 ## Toiminnallisuudet
 - Käyttäjä
