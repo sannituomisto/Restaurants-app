@@ -1,47 +1,18 @@
-# Restaurants-app
-Sovelluksessa käyttäjä voi etsiä ravintoloita sekä antaa niille arvosteluja.
-## Toiminnallisuudet
-- Käyttäjä
-  - voi luoda uuden tunnuksen **tehty**
-  - voi poistaa olemassa olevan tunnuksen **tehty**
-  - voi kirjautua sisään ja ulos luomillaan tunnuksilla **tehty**
-  - voi lisätä ravintoloita suosikkeihin ja poistaa ravintoloita suosikeista **tehty**
-  - näkee ravintoloiden tiedot (aukioloajat, lyhyt kuvaus, hintaluokka) **tehty**
-  - näkee ravintolat järjestyksessä arvostelujen perusteella **tehty**
-  - näkee ravintolat järjestyksessä hintaluokan perusteella **tehty**
-  - voi antaa ravintolalle arvosanan asteikolla 1-5 sekä halutessaan lyhyen sanallisen arvion **tehty**
-  - voi poistaa aiemmin antamaansa arvion **tehty**
-- Ylläpitäjä
-  - voi luoda uuden tunnuksen **tehty**
-  - voi poistaa olemassa olevan tunnuksen **tehty**
-  - voi kirjautua sisään ja ulos luomillaan tunnuksilla **tehty**
-  - voi lisätä ja poistaa ravintoloita **tehty**
-  - voi poistaa käyttäjien antamia epäasiallisia arvosteluja **tehty**
-  - voi järjestää ravintolat eri kategorioihin **tehty**
-  
-## Sovelluksen käynnistäminen paikallisesti
-1. Kloonaa tämä repositorio koneellesi ja siirry sen juurikansioon.   
+# :sushi: Restaurants-app
 
-2. Luo .env-tiedosto, jonka sisältö on seuraavanlainen:
+This app was developed in the Database Application project course. The task was to build a web application that utilizes a database with Python (Flask) and PostgreSQL.
 
-> DATABASE_URL=\<tietokannan-paikallinen-osoite>   
-> SECRET_KEY=\<salainen-avain>
+This app allows users to explore and interact with restaurants. Users can create an account, save their favorite restaurants, view details like opening hours and price range, and rate or review places. Restaurants can be sorted by reviews or price. Admins have additional control, enabling them to add or remove restaurants and remove inappropriate user reviews.
 
-3. Aktivoi virtuaaliympäristö ja asenna sovelluksen riippuvuudet komennoilla:
+## :pencil: What did I learn
 
-`$ python3 -m venv venv`  
-`$ source venv/bin/activate`  
-`$ pip install -r ./requirements.txt`
+- Developing web applications that interact with a database
+- Understanding the principles behind dynamic websites
+- Designing databases and writing necessary queries for web applications
 
-4. Määritä tietokannan skeema komennolla
-
-`$ psql < schema.sql`
-
-5. Nyt sovellus käynnistyy komennolla
-
-`$ flask run`
-
-## Huom
-Sovelluksessa ei ole valmiina ravintoloita vaan admin-käyttäjän täytyy itse lisätä ravintoloita sovellukseen.
-
-
+### :rocket: Technologies
+- Python (Flask)
+- PostgreSQL
+- Git version control
+- HTML
+- CSS
