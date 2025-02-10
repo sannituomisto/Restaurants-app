@@ -16,3 +16,7 @@ This app allows users to explore and interact with restaurants. Users can create
 - Git version control
 - HTML
 - CSS
+
+### [Features](documentation/features.md)
+
+### [Instructions to run the app locally](documentation/instructions.md)
