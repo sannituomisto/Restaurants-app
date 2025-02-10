@@ -1,6 +1,6 @@
 # :sushi: Restaurants-app
 
-This app was developed in the Database Application project course. The task was to build a web application that utilizes a database with Python (Flask) and PostgreSQL.
+This app was developed in the Database Application project course, where the task was to build a web application that utilizes a database.
 
 This app allows users to explore and interact with restaurants. Users can create an account, save their favorite restaurants, view details like opening hours and price range, and rate or review places. Restaurants can be sorted by reviews or price. Admins have additional control, enabling them to add or remove restaurants and remove inappropriate user reviews.
 
